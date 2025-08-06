@@ -7,75 +7,67 @@
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at center, #121212, #000000);
       color: white;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
     }
+
     h1 {
       font-size: 3rem;
       font-weight: 600;
       margin-bottom: 20px;
       text-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
-    .username-display {
+
+    .username {
       font-size: 2.5rem;
       font-weight: 600;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       text-shadow: 0 0 10px rgba(255,255,255,0.15);
+      user-select: all;
     }
-    .vanity-link {
+
+    .vanity-url {
       font-size: 1rem;
       color: #999;
       margin-bottom: 30px;
       letter-spacing: 0.05em;
+      user-select: all;
     }
-    .owner {
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: linear-gradient(90deg, #d4af37, #ffd54f, #d4af37);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 25px;
-    }
-    .owner img {
-      width: 22px;
-      height: 22px;
-    }
+
     .badges {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 10px;
     }
+
     .badges img {
       width: 36px;
       height: 36px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.05);
       padding: 5px;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: 0.2s;
       cursor: default;
     }
+
     .badges img:hover {
       transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.15);
     }
+
     audio {
       display: none;
     }
@@ -83,12 +75,9 @@
 </head>
 <body>
   <h1>GRIEF</h1>
-  <div class="username-display" id="displayName">@username</div>
-  <div class="vanity-link" id="vanityLink">grief.xyz/username</div>
 
-  <div class="owner">
-    Owner <img src="assets/crownw.png" alt="Crown" />
-  </div>
+  <div class="username" id="usernameDisplay">@username</div>
+  <div class="vanity-url" id="vanityUrlDisplay">grief.xyz/username</div>
 
   <div class="badges">
     <img src="assets/developer.png" title="Developer" alt="Developer Badge" />
@@ -104,8 +93,8 @@
     const params = new URLSearchParams(window.location.search);
     const username = params.get('u') || 'unknown';
 
-    document.getElementById('displayName').textContent = `@${username}`;
-    document.getElementById('vanityLink').textContent = `grief.xyz/${username}`;
+    document.getElementById('usernameDisplay').textContent = `@${username}`;
+    document.getElementById('vanityUrlDisplay').textContent = `grief.xyz/${username}`;
 
     document.querySelectorAll('.badges img').forEach(img => {
       img.addEventListener('mouseover', () => {
