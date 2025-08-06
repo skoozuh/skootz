@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRRD | Claim Your Vanity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .background-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 8vw;
+      color: #111;
+      font-weight: 900;
+      opacity: 0.05;
+      text-align: center;
+      line-height: 1;
+      user-select: none;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #A8FFD7;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-buttons button {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .nav-buttons button:hover {
+      background: white;
+      color: black;
+    }
+
+    .center-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .center-box input {
+      padding: 15px 20px;
+      border: none;
+      outline: none;
+      background: #000;
+      color: white;
+      width: 300px;
+    }
+
+    .center-box input::placeholder {
+      color: #aaa;
+    }
+
+    .center-box button {
+      padding: 15px 25px;
+      background: white;
+      color: black;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .center-box button:hover {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-text">
+    CRRD<br>CRRD<br>CRRD<br>CRRD
+  </div>
+
+  <header>CRRD</header>
+
+  <div class="nav-buttons">
+    <button>Sign up</button>
+    <button>Log in</button>
+  </div>
+
+  <div class="center-box">
+    <input type="text" placeholder="Enter vanity" id="vanityInput">
+    <button onclick="claimVanity()">Claim</button>
+  </div>
+
+  <script>
+    function claimVanity() {
+      const input = document.getElementById('vanityInput');
+      const value = input.value.trim();
+      if (!value) {
+        alert('Please enter a vanity.');
+        return;
+      }
+      alert(`Vanity "${value}" is being claimed...`);
+    }
+  </script>
+</body>
+</html>
