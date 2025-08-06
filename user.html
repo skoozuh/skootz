@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GRIEF Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,35 +15,35 @@
       color: white;
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 30px;
     }
 
     .profile-card {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
       padding: 30px;
       text-align: center;
       backdrop-filter: blur(14px);
-      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
     }
 
     .profile-card img.pfp {
       width: 100px;
       height: 100px;
-      border-radius: 50%;
-      margin-bottom: 15px;
+      border-radius: 100%;
       border: 2px solid white;
+      margin-bottom: 15px;
     }
 
     .username {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 600;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .badge-row {
@@ -57,28 +57,15 @@
     .badge-row img {
       width: 36px;
       height: 36px;
-      border-radius: 6px;
+      border-radius: 8px;
       background: rgba(255,255,255,0.05);
       padding: 4px;
       transition: 0.2s ease;
+      cursor: default;
     }
 
     .badge-row img:hover {
       transform: scale(1.1);
-    }
-
-    .media-embeds {
-      margin-top: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .media-embeds iframe {
-      border: none;
-      border-radius: 12px;
-      width: 100%;
-      height: 80px;
     }
 
     .social-buttons {
@@ -99,6 +86,20 @@
 
     .social-buttons a:hover {
       background: #A8FFD7;
+    }
+
+    .media-embeds {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .media-embeds iframe {
+      width: 100%;
+      height: 80px;
+      border-radius: 14px;
+      border: none;
     }
 
     @media (max-width: 500px) {
@@ -127,8 +128,12 @@
     </div>
 
     <div class="media-embeds">
-      <!-- Example Spotify Embed -->
-      <iframe src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <!-- Dear Mama by Nino Paid embed -->
+      <iframe 
+        src="https://open.spotify.com/embed/track/6rEaDfe9hFb5fpFJsRxU3I?utm_source=generator" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 
