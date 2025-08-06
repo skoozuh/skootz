@@ -13,28 +13,38 @@
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at center, #121212, #000000);
       color: white;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      padding: 20px;
       text-align: center;
     }
 
-    .username {
-      font-size: 2rem;
+    h1 {
+      font-size: 3rem;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
 
-    .vanity {
+    .username {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
+    }
+
+    .vanity-link {
       font-size: 1rem;
       color: #999;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      letter-spacing: 0.05em;
     }
 
     .owner {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
       background: linear-gradient(90deg, #d4af37, #ffd54f, #d4af37);
       -webkit-background-clip: text;
@@ -42,33 +52,35 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      margin-bottom: 1.6rem;
+      margin-bottom: 2rem;
     }
 
     .owner img {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
     }
 
     .badges {
       display: flex;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-bottom: 20px;
     }
 
     .badges img {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
       background: rgba(255,255,255,0.05);
-      padding: 5px;
-      transition: 0.2s;
+      padding: 6px;
+      transition: transform 0.2s ease, background 0.2s ease;
+      cursor: default;
     }
 
     .badges img:hover {
-      transform: scale(1.1);
+      transform: scale(1.15);
+      background: rgba(255,255,255,0.15);
     }
 
     audio {
@@ -77,19 +89,21 @@
   </style>
 </head>
 <body>
+  <h1>GRIEF</h1>
+
   <div class="username" id="displayName">@username</div>
-  <div class="vanity" id="vanityLink">grief.xyz/username</div>
+  <div class="vanity-link" id="vanityLink">grief.xyz/username</div>
 
   <div class="owner">
-    Owner <img src="assets/crownw.png" alt="Crown">
+    Owner <img src="assets/crownw.png" alt="Crown" />
   </div>
 
   <div class="badges">
-    <img src="assets/developer.png" title="Developer">
-    <img src="assets/creator.png" title="Creator">
-    <img src="assets/staff.png" title="Staff">
-    <img src="assets/bugfinder.png" title="Bug Finder">
-    <img src="assets/oguser.png" title="OG User">
+    <img src="assets/developer.png" title="Developer" alt="Developer Badge" />
+    <img src="assets/creator.png" title="Creator" alt="Creator Badge" />
+    <img src="assets/staff.png" title="Staff" alt="Staff Badge" />
+    <img src="assets/bugfinder.png" title="Bug Finder" alt="Bug Finder Badge" />
+    <img src="assets/oguser.png" title="OG User" alt="OG User Badge" />
   </div>
 
   <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
