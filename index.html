@@ -3,524 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GRIEF | Claim Your Vanity Username</title>
-
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <title>grief.lol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset & basics */
-    *, *::before, *::after {
-      margin: 0; padding: 0; box-sizing: border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+
     body {
-      background: #0a0a0a;
-      color: #eee;
       font-family: 'Poppins', sans-serif;
-      line-height: 1.5;
-      min-height: 100vh;
+      background-color: #0a0a0a;
+      color: #f3f4f6;
       display: flex;
       flex-direction: column;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    a:focus {
-      outline: 2px solid #d4af37;
-      outline-offset: 3px;
+      min-height: 100vh;
     }
 
-    /* Navbar */
-    nav {
-      background: #121212;
-      padding: 1rem 2rem;
+    header {
+      width: 100%;
+      padding: 16px 30px;
+      background-color: #111;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
-    nav .logo {
+
+    .logo {
+      font-size: 1.4rem;
       font-weight: 700;
-      font-size: 1.8rem;
-      color: #d4af37;
-      user-select: none;
-      letter-spacing: 1.3px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav ul li {
-      cursor: pointer;
-      user-select: none;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.3rem 0;
-      position: relative;
-    }
-    nav ul li:hover,
-    nav ul li:focus {
-      color: #d4af37;
-    }
-    nav ul li::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 3px;
-      background: #d4af37;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-    nav ul li:hover::after,
-    nav ul li:focus::after {
-      width: 100%;
-    }
-
-    /* Container & sections */
-    .container {
-      max-width: 900px;
-      margin: 2rem auto 4rem;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      margin-bottom: 4rem;
-    }
-
-    /* Home Section */
-    #home {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 2rem;
-      padding-top: 2rem;
-    }
-    #home h1 {
-      font-size: 3rem;
-      color: #d4af37;
-      user-select: text;
-    }
-    #home p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      color: #bbb;
-      user-select: text;
-    }
-
-    /* Form styles */
-    form {
-      background: #121212;
-      padding: 2rem 2.5rem;
-      border-radius: 16px;
-      box-shadow:
-        0 0 20px rgba(212, 175, 55, 0.3),
-        0 8px 30px rgba(0,0,0,0.8);
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      color: #3b82f6;
       user-select: none;
     }
-    label {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      display: block;
-      color: #eee;
-      user-select: text;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: none;
-      background: #1f1f1f;
-      color: white;
-      font-size: 1rem;
-      outline-offset: 3px;
-      transition: background 0.3s ease;
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="password"]:focus {
-      background: #2a2a2a;
-      outline: 2px solid #d4af37;
-    }
-    button {
-      background: #d4af37;
-      color: #0a0a0a;
-      font-weight: 700;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.3s ease, transform 0.2s ease;
-      user-select: none;
-    }
-    button:hover,
-    button:focus {
-      background: #b8972f;
-      transform: scale(1.05);
-      outline: none;
-    }
-    .error {
-      color: #ff6b6b;
-      font-size: 0.9rem;
-      margin-top: -1rem;
-      margin-bottom: 0.5rem;
-      user-select: text;
+
+    nav {
+      display: flex;
+      gap: 20px;
     }
 
-    /* Social login buttons */
-    .social-login {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      margin-top: 1rem;
-    }
-    .social-btn {
-      background: #1f1f1f;
-      padding: 10px 14px;
-      border-radius: 12px;
-      cursor: pointer;
-      color: #ddd;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: background 0.3s ease, color 0.3s ease;
-      user-select: none;
-      border: 2px solid transparent;
-    }
-    .social-btn:hover,
-    .social-btn:focus {
-      background: #d4af37;
-      color: #0a0a0a;
-      border-color: #b8972f;
-      outline: none;
-    }
-
-    /* Features Section */
-    #features h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: #d4af37;
-      margin-bottom: 2rem;
-      user-select: text;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-      gap: 2rem;
-    }
-    .feature-card {
-      background: #121212;
-      padding: 1.8rem 1.6rem;
-      border-radius: 16px;
-      box-shadow:
-        0 0 15px rgba(212, 175, 55, 0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      transition: transform 0.3s ease;
-      cursor: default;
-      user-select: none;
-    }
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow:
-        0 0 25px rgba(212, 175, 55, 0.5);
-    }
-    .feature-icon {
-      font-size: 3.2rem;
-      color: #d4af37;
-    }
-    .feature-title {
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-align: center;
-      color: #eee;
-      user-select: text;
-    }
-    .feature-desc {
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
       font-size: 0.95rem;
-      text-align: center;
-      color: #bbb;
-      user-select: text;
-    }
-
-    /* Pricing Section */
-    #pricing h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: #d4af37;
-      margin-bottom: 2rem;
-      user-select: text;
-    }
-    .pricing-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-    .pricing-card {
-      background: #121212;
-      padding: 2rem;
-      border-radius: 20px;
-      width: 260px;
-      box-shadow:
-        0 0 20px rgba(212, 175, 55, 0.25);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      user-select: none;
-      transition: transform 0.3s ease;
-    }
-    .pricing-card:hover {
-      transform: translateY(-10px);
-      box-shadow:
-        0 0 30px rgba(212, 175, 55, 0.6);
-    }
-    .plan-name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #d4af37;
-      user-select: text;
-    }
-    .plan-price {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #eee;
-      user-select: text;
-    }
-    .plan-desc {
-      font-size: 1rem;
-      color: #bbb;
-      text-align: center;
-      margin-bottom: 2rem;
-      user-select: text;
-    }
-    .plan-btn {
-      background: #d4af37;
-      color: #0a0a0a;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    .plan-btn:hover,
-    .plan-btn:focus {
-      background: #b8972f;
-      outline: none;
-    }
-
-    /* About Section */
-    #about h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: #d4af37;
-      margin-bottom: 1.5rem;
-      user-select: text;
-    }
-    #about p {
-      max-width: 650px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      color: #bbb;
-      line-height: 1.6;
-      user-select: text;
-      text-align: center;
-    }
-
-    /* Contact Section */
-    #contact h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: #d4af37;
-      margin-bottom: 2rem;
-      user-select: text;
-    }
-    #contact .socials {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      font-size: 2rem;
-      user-select: none;
-    }
-    #contact .socials a {
-      color: #bbb;
       transition: color 0.3s ease;
     }
-    #contact .socials a:hover,
-    #contact .socials a:focus {
-      color: #d4af37;
-      outline: none;
+
+    nav a:hover {
+      color: #3b82f6;
     }
-    #contact form {
-      margin-top: 2rem;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+
+    main {
+      flex: 1;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
     }
-    #contact input, #contact textarea {
-      background: #1f1f1f;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 15px;
-      color: #eee;
+
+    .card {
+      background-color: #111827;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h1 {
+      font-size: 2.5rem;
+      color: #3b82f6;
+      margin-bottom: 10px;
+    }
+
+    .card p {
       font-size: 1rem;
-      resize: none;
-      outline-offset: 3px;
-      transition: background 0.3s ease;
-    }
-    #contact input:focus, #contact textarea:focus {
-      background: #2a2a2a;
-      outline: 2px solid #d4af37;
-    }
-    #contact button {
-      background: #d4af37;
-      color: #0a0a0a;
-      font-weight: 700;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    #contact button:hover,
-    #contact button:focus {
-      background: #b8972f;
-      outline: none;
+      color: #94a3b8;
+      margin-bottom: 30px;
     }
 
-    /* Loading Spinner */
-    .spinner {
-      border: 4px solid rgba(212, 175, 55, 0.2);
-      border-top: 4px solid #d4af37;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-      display: none;
-    }
-    .spinner.active {
-      display: block;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      nav ul {
-        gap: 1rem;
+    .buttons a {
+      padding: 12px 26px;
+      background-color: #3b82f6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px 0;
+      font-size: 0.8rem;
+      color: #6b7280;
+      background: #111;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 25px;
       }
-      #home h1 {
-        font-size: 2.4rem;
+
+      .card h1 {
+        font-size: 2rem;
       }
-      .features-grid {
-        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+
+      nav {
+        gap: 12px;
       }
-      .pricing-card {
-        width: 100%;
+
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav role="navigation" aria-label="Primary navigation">
-    <div class="logo" tabindex="0">GRIEF</div>
-    <ul>
-      <li><a href="#home" tabindex="0">Home</a></li>
-      <li><a href="#features" tabindex="0">Features</a></li>
-      <li><a href="#pricing" tabindex="0">Pricing</a></li>
-      <li><a href="#about" tabindex="0">About</a></li>
-      <li><a href="#contact" tabindex="0">Contact</a></li>
-    </ul>
-  </nav>
+  <header>
+    <div class="logo">grief.lol</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">Badges</a>
+      <a href="#">Login</a>
+      <a href="#">Sign Up</a>
+    </nav>
+  </header>
 
-  <main class="container" role="main">
+  <main>
+    <div class="card">
+      <h1>grief.lol</h1>
+      <p>A place to flex your badges, customize your page, and leave your mark.</p>
+      <div class="buttons">
+        <a href="#">Claim Name</a>
+        <a href="#">Browse Users</a>
+      </div>
+    </div>
+  </main>
 
-    <!-- Home / Signup/Login -->
-    <section id="home" aria-label="Signup and login section">
-      <h1>Claim Your Vanity Username</h1>
-      <p>Sign up or log in to create your custom biolink profile. Showcase your badges, social links, and more!</p>
+  <footer>
+    &copy; 2025 grief.lol — All rights reserved
+  </footer>
 
-      <form id="signupLoginForm" novalidate aria-describedby="form-error">
-        <div>
-          <label for="username">Username or Email</label>
-          <input type="text" id="username" name="username" placeholder="Enter username or email" autocomplete="username" required aria-required="true" />
-          <div class="error" id="usernameError" aria-live="assertive"></div>
-        </div>
-
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter password" autocomplete="current-password" required aria-required="true" />
-          <div class="error" id="passwordError" aria-live="assertive"></div>
-        </div>
-
-        <button type="submit" aria-label="Claim or login">Claim / Login</button>
-
-        <div class="spinner" id="loadingSpinner" role="status" aria-live="polite" aria-label="Loading"></div>
-
-        <div class="social-login" aria-label="Social login options">
-          <button type="button" class="social-btn" aria-label="Login with Google"><i class="fab fa-google"></i> Google</button>
-          <button type="button" class="social-btn" aria-label="Login with Facebook"><i class="fab fa-facebook"></i> Facebook</button>
-        </div>
-      </form>
-    </section>
-
-    <!-- Features -->
-    <section id="features" aria-label="Features of the biolink website">
-      <h2>Features</h2>
-      <div class="features-grid">
-        <div class="feature-card" tabindex="0">
-          <i class="fas fa-user-circle feature-icon" aria-hidden="true"></i>
-          <h3 class="feature-title">Custom Profiles</h3>
-          <p class="feature-desc">Create unique biolink profiles with your own style and badges.</p>
-        </div>
-        <div class="feature-card" tabindex="0">
-          <i class="fas fa-award feature-icon" aria-hidden="true"></i>
-          <h3 class="feature-title">Badges & Achievements</h3>
-          <p class="feature-desc">Showcase your special badges earned from various activities.</p>
-        </div>
-        <div class="feature-card" tabindex="0">
-          <i class="fas fa-music feature-icon" aria-hidden="true"></i>
-          <h3 class="feature-title">Music Embeds</h3>
-          <p class="feature-desc">Embed your favorite music and playlists directly on your profile.</p>
-        </div>
-        <div class="feature-card" tabindex="0">
-          <i class="fas fa-share-alt feature-icon" aria-hidden="true"></i>
-          <h3 class="feature-title">Social Media Links</h3>
-          <p class="feature-desc">Add your socials with clickable icons and custom URLs.</p>
-       
+</body>
+</html>
