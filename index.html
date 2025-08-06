@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GRIEF</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
+      background: radial-gradient(circle at center, #0c0c0c, #000);
+      color: white;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -21,174 +20,140 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      padding: 0 20px;
     }
 
-    /* Large background text behind input */
-    .background-text {
+    /* Watermark background text */
+    .watermark {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-weight: 900;
-      font-size: 12rem;
-      color: #111;
-      user-select: none;
+      font-size: 15vw;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.02);
+      text-align: center;
       pointer-events: none;
-      line-height: 1;
-      letter-spacing: 0.1em;
-      font-family: 'Poppins', sans-serif;
-      text-transform: uppercase;
-      white-space: nowrap;
-      opacity: 0.15;
-      z-index: 0;
-    }
-
-    /* Top left logo */
-    .logo {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #5fffc5; /* minty green */
-      letter-spacing: 0.15em;
       user-select: none;
-      z-index: 10;
-      cursor: default;
     }
 
-    /* Top right buttons container */
+    /* Auth buttons */
     .top-right {
-      position: fixed;
+      position: absolute;
       top: 20px;
       right: 20px;
       display: flex;
-      gap: 12px;
-      z-index: 10;
+      gap: 10px;
     }
 
     .top-right button {
-      background: none;
-      border: 1.8px solid #fff;
-      color: white;
-      padding: 6px 16px;
-      border-radius: 9999px;
+      background: #fff;
+      color: #000;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
       font-weight: 600;
-      font-size: 0.9rem;
       cursor: pointer;
-      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    .top-right button:last-child {
-      background: white;
-      color: black;
-      border: none;
+    .top-right button:hover {
+      background: #e5e5e5;
     }
 
-    .top-right button:last-child:hover {
-      background: #eee;
-    }
-
-    .top-right button:first-child:hover {
-      background: white;
-      color: black;
-    }
-
-    /* Main input + button container */
-    .input-container {
+    /* Center container */
+    .vanity-box {
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 20px;
       display: flex;
-      border: 1.8px solid white;
-      border-radius: 9999px;
-      overflow: hidden;
-      width: 350px;
-      max-width: 90vw;
-      background-color: transparent;
-      z-index: 1;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
-    input[type="text"] {
-      flex-grow: 1;
-      border: none;
-      padding: 14px 20px;
-      font-size: 1rem;
-      color: white;
+    .vanity-box input {
       background: transparent;
-      outline-offset: 2px;
-      font-weight: 500;
-    }
-
-    input[type="text"]::placeholder {
-      color: #999;
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-    }
-
-    button.claim-btn {
-      background-color: white;
       border: none;
-      padding: 14px 28px;
-      font-weight: 700;
-      cursor: pointer;
-      color: black;
+      outline: none;
+      color: white;
+      padding: 10px 15px;
       font-size: 1rem;
-      transition: background-color 0.25s ease;
+      width: 200px;
     }
 
-    button.claim-btn:hover {
-      background-color: #ddd;
+    .vanity-box button {
+      background: #fff;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
-    /* Badges below input */
+    .vanity-box button:hover {
+      background: #ddd;
+    }
+
+    /* Badge bar */
     .badges {
-      margin-top: 32px;
+      position: absolute;
+      bottom: 25px;
       display: flex;
-      gap: 14px;
-      justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
-      max-width: 350px;
-      z-index: 1;
+      justify-content: center;
     }
 
     .badges img {
       width: 36px;
       height: 36px;
-      border-radius: 8px;
-      object-fit: contain;
-      cursor: default;
-      user-select: none;
-      filter: brightness(0.8);
-      transition: filter 0.2s ease;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      padding: 4px;
+      transition: 0.2s;
     }
 
     .badges img:hover {
-      filter: brightness(1);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      .vanity-box {
+        flex-direction: column;
+      }
+
+      .vanity-box input {
+        width: 100%;
+      }
+
+      .top-right {
+        right: 10px;
+        top: 10px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="logo">GRIEF</div>
+  <div class="watermark">GRIEF</div>
 
   <div class="top-right">
     <button>Sign up</button>
     <button>Log in</button>
   </div>
 
-  <div class="background-text" aria-hidden="true">GRIEF GRIEF GRIEF</div>
-
-  <div class="input-container">
-    <input type="text" id="vanityInput" placeholder="Enter vanity" aria-label="Enter vanity name" />
-    <button class="claim-btn" onclick="claimVanity()">Claim</button>
+  <div class="vanity-box">
+    <input type="text" placeholder="Enter vanity" id="vanityInput">
+    <button onclick="claimVanity()">Claim</button>
   </div>
 
-  <div class="badges" aria-label="Badges">
-    <img src="assets/developer.png" alt="Developer badge" title="Developer" />
-    <img src="assets/creator.png" alt="Creator badge" title="Creator" />
-    <img src="assets/staff.png" alt="Staff badge" title="Staff" />
-    <img src="assets/oguser.png" alt="OG User badge" title="OG User" />
+  <div class="badges">
+    <img src="assets/developer.png" title="Developer">
+    <img src="assets/creator.png" title="Creator">
+    <img src="assets/creative.png" title="Creative">
+    <img src="assets/oguser.png" title="OG User">
+    <img src="assets/donator.png" title="Donator">
   </div>
 
   <script>
