@@ -1,106 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GRIEF</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at center, #121212, #000000);
-      color: white;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dark Modern Front Page</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #eee;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  nav a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 30px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #f0d36d;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5em;
+    user-select: none;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2em;
+    color: #bbb;
+    max-width: 600px;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 20px;
+  }
+
+  button {
+    background-color: #d4af37;
+    color: #0a0a0a;
+    border: none;
+    padding: 15px 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  button:hover {
+    background-color: #f0d36d;
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1rem;
+      max-width: 90%;
+    }
+    .btn-group {
       flex-direction: column;
     }
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-    input {
-      padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-      background: #1f1f1f;
-      color: white;
-      width: 250px;
-      margin-bottom: 20px;
-    }
     button {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      background: white;
-      color: black;
-      cursor: pointer;
-      transition: 0.2s;
+      width: 100%;
+      padding: 15px 0;
     }
-    button:hover {
-      background: #ccc;
-    }
-    .badges {
-      display: flex;
-      gap: 10px;
-      margin-top: 25px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .badges img {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      padding: 5px;
-      transition: 0.2s;
-    }
-    .badges img:hover {
-      transform: scale(1.1);
-    }
-    audio {
-      display: none;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <h1>GRIEF</h1>
-  <input type="text" placeholder="Enter your name..." id="vanityInput">
-  <button onclick="claimVanity()">Claim</button>
+<header>
+  <nav>
+    <a href="#">Sign Up</a>
+    <a href="#">Login</a>
+  </nav>
+</header>
 
-  <div class="badges">
-    <img src="assets/developer.png" title="Developer">
-    <img src="assets/creator.png" title="Creator">
-    <img src="assets/staff.png" title="Staff">
-    <img src="assets/bugfinder.png" title="Bug Finder">
-    <img src="assets/oguser.png" title="OG User">
+<main>
+  <h1>GUNS.LOL</h1>
+  <p>The place to discover, trade, and master your favorite in-game weapons.</p>
+  <div class="btn-group">
+    <button>Get Started</button>
+    <button>Learn More</button>
   </div>
-
-  <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
-
-  <script>
-    function claimVanity() {
-      const input = document.getElementById('vanityInput');
-      const username = input.value.trim();
-      if (username) {
-        window.location.href = `user.html?u=${encodeURIComponent(username)}`;
-      }
-    }
-    // Optional: add hover sound
-    document.querySelectorAll('.badges img').forEach(img => {
-      img.addEventListener('mouseover', () => {
-        const sound = document.getElementById('hoverSound');
-        if (sound) sound.play();
-      });
-    });
-  </script>
+</main>
 </body>
 </html>
