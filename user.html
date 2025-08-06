@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GRIEF Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom right, #0f0f0f, #000);
@@ -16,105 +18,142 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
+      padding: 20px;
     }
-
     .profile-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       padding: 30px;
       text-align: center;
       backdrop-filter: blur(12px);
-      box-shadow: 0 0 25px rgba(255,255,255,0.04);
-      width: 90%;
-      max-width: 400px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.04);
+      width: 100%;
+      max-width: 420px;
     }
-
-    .profile-card img.pfp {
-      width: 100px;
-      height: 100px;
-      border-radius: 100%;
-      margin-bottom: 15px;
+    .pfp {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin-bottom: 18px;
       border: 3px solid white;
+      object-fit: cover;
     }
-
     .username {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 10px;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 0 8px gold;
     }
-
+    .username img.crown {
+      width: 30px;
+      height: 30px;
+      filter: drop-shadow(0 0 5px gold);
+    }
     .badge-row {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px 0;
+      gap: 14px;
+      margin: 22px 0;
     }
-
     .badge-row img {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 6px;
-      padding: 4px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 6px;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
     }
-
     .badge-row img:hover {
-      transform: scale(1.1);
+      transform: scale(1.15);
+      box-shadow: 0 0 12px gold;
     }
-
     .media-buttons {
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
     }
-
     .media-buttons a {
-      display: inline-block;
-      margin: 6px;
-      padding: 10px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
       background: white;
-      color: black;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s ease;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+      cursor: pointer;
     }
-
     .media-buttons a:hover {
-      background: #A8FFD7;
+      background: #ffdd55;
+      box-shadow: 0 0 8px gold;
+    }
+    .media-buttons img {
+      width: 24px;
+      height: 24px;
+      filter: invert(0%);
     }
   </style>
 </head>
 <body>
-  <div class="profile-card">
-    <img class="pfp" src="assets/pfp.png" alt="Profile Picture">
-    <div class="username" id="username">@user</div>
-
-    <div class="badge-row">
-      <img src="assets/developer.png" title="Developer">
-      <img src="assets/creative.png" title="Creative">
-      <img src="assets/oguser.png" title="OG User">
-      <img src="assets/donator.png" title="Donator">
-      <img src="assets/staff.png" title="Staff">
+  <div class="profile-card" role="main" aria-label="User profile card">
+    <img class="pfp" src="assets/pfp.png" alt="Profile picture" />
+    <div class="username" id="username">
+      @user
+      <img class="crown" src="assets/crownw.png" alt="Crown icon" />
     </div>
 
-    <div class="media-buttons">
-      <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">Spotify</a>
-      <a href="#" target="_blank">Last.fm</a>
+    <div class="badge-row" aria-label="User badges">
+      <img src="assets/developer.png" title="Developer" alt="Developer badge" />
+      <img src="assets/creative.png" title="Creative" alt="Creative badge" />
+      <img src="assets/oguser.png" title="OG User" alt="OG User badge" />
+      <img src="assets/donator.png" title="Donator" alt="Donator badge" />
+      <img src="assets/staff.png" title="Staff" alt="Staff badge" />
+      <img src="assets/booster.png" title="Booster" alt="Booster badge" />
+      <img src="assets/trophy.png" title="Trophy" alt="Trophy badge" />
+    </div>
+
+    <div class="media-buttons" aria-label="User social media links">
+      <a href="#" target="_blank" aria-label="Instagram">
+        <img src="assets/iglogo.png" alt="Instagram logo" />
+      </a>
+      <a href="#" target="_blank" aria-label="Spotify">
+        <img src="assets/play.png" alt="Spotify play logo" />
+      </a>
+      <a href="#" target="_blank" aria-label="Last.fm">
+        <img src="assets/lastfmlogo.png" alt="Last.fm logo" />
+      </a>
     </div>
   </div>
 
+  <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
+
   <script>
+    // Update username from URL query param
     const queryParams = new URLSearchParams(window.location.search);
-    const vanity = queryParams.get(\"u\");
-    const usernameEl = document.getElementById(\"username\");
+    const vanity = queryParams.get("u");
+    const usernameEl = document.getElementById("username");
     if (vanity) {
-      usernameEl.textContent = `@${vanity}`;
+      usernameEl.firstChild.textContent = `@${vanity} `;
     }
+
+    // Badge hover sound
+    document.querySelectorAll('.badge-row img').forEach(img => {
+      img.addEventListener('mouseover', () => {
+        const sound = document.getElementById('hoverSound');
+        if (sound) {
+          sound.currentTime = 0;
+          sound.play();
+        }
+      });
+    });
   </script>
 </body>
 </html>
