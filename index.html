@@ -1,229 +1,526 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>grief.lol - Sidebar Tab Layout</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  <title>GRIEF | Claim Your Vanity Username</title>
 
-    /* Reset */
-    * {
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Reset & basics */
+    *, *::before, *::after {
       margin: 0; padding: 0; box-sizing: border-box;
     }
-
-    body, html {
-      height: 100%;
-      background-color: #121212;
-      font-family: 'Poppins', sans-serif;
-      color: #ddd;
-      display: flex;
-      overflow: hidden;
+    html {
+      scroll-behavior: smooth;
     }
-
-    /* Sidebar */
-    aside.sidebar {
-      width: 220px;
-      background-color: #1f1f1f;
+    body {
+      background: #0a0a0a;
+      color: #eee;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 30px;
-      border-right: 2px solid #1abc9c;
-      user-select: none;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:focus {
+      outline: 2px solid #d4af37;
+      outline-offset: 3px;
     }
 
-    .logo {
+    /* Navbar */
+    nav {
+      background: #121212;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    nav .logo {
       font-weight: 700;
       font-size: 1.8rem;
-      color: #1abc9c;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 40px;
-      cursor: default;
+      color: #d4af37;
+      user-select: none;
+      letter-spacing: 1.3px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul li {
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0;
+      position: relative;
+    }
+    nav ul li:hover,
+    nav ul li:focus {
+      color: #d4af37;
+    }
+    nav ul li::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 3px;
+      background: #d4af37;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    nav ul li:hover::after,
+    nav ul li:focus::after {
+      width: 100%;
     }
 
-    nav.sidebar-nav {
+    /* Container & sections */
+    .container {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    /* Home Section */
+    #home {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 0 20px;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+      padding-top: 2rem;
+    }
+    #home h1 {
+      font-size: 3rem;
+      color: #d4af37;
+      user-select: text;
+    }
+    #home p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      color: #bbb;
+      user-select: text;
     }
 
-    nav.sidebar-nav a {
-      text-decoration: none;
-      color: #bbb;
+    /* Form styles */
+    form {
+      background: #121212;
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.3),
+        0 8px 30px rgba(0,0,0,0.8);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      user-select: none;
+    }
+    label {
       font-weight: 600;
-      font-size: 1.05rem;
-      padding: 12px 18px;
-      border-radius: 8px;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      margin-bottom: 0.3rem;
+      display: block;
+      color: #eee;
+      user-select: text;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: none;
+      background: #1f1f1f;
+      color: white;
+      font-size: 1rem;
+      outline-offset: 3px;
+      transition: background 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      background: #2a2a2a;
+      outline: 2px solid #d4af37;
+    }
+    button {
+      background: #d4af37;
+      color: #0a0a0a;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: none;
       cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus {
+      background: #b8972f;
+      transform: scale(1.05);
+      outline: none;
+    }
+    .error {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: -1rem;
+      margin-bottom: 0.5rem;
+      user-select: text;
+    }
+
+    /* Social login buttons */
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .social-btn {
+      background: #1f1f1f;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #ddd;
+      font-size: 1.3rem;
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: background 0.3s ease, color 0.3s ease;
       user-select: none;
+      border: 2px solid transparent;
+    }
+    .social-btn:hover,
+    .social-btn:focus {
+      background: #d4af37;
+      color: #0a0a0a;
+      border-color: #b8972f;
+      outline: none;
     }
 
-    nav.sidebar-nav a:hover,
-    nav.sidebar-nav a.active {
-      background-color: #1abc9c;
-      color: #121212;
-      font-weight: 700;
+    /* Features Section */
+    #features h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #d4af37;
+      margin-bottom: 2rem;
+      user-select: text;
     }
-
-    /* Simple icon placeholders */
-    nav.sidebar-nav a span.icon {
-      font-size: 1.3rem;
-      line-height: 1;
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+      gap: 2rem;
     }
-
-    /* Main content */
-    main.content {
-      flex: 1;
-      padding: 40px 50px;
-      overflow-y: auto;
-      user-select: none;
-    }
-
-    main.content h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #1abc9c;
-      margin-bottom: 12px;
-      user-select: none;
-    }
-
-    main.content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #ccc;
-      max-width: 700px;
-      margin-bottom: 30px;
-    }
-
-    /* Section style */
-    section {
-      margin-bottom: 40px;
-    }
-
-    /* Buttons */
-    .btn-group {
+    .feature-card {
+      background: #121212;
+      padding: 1.8rem 1.6rem;
+      border-radius: 16px;
+      box-shadow:
+        0 0 15px rgba(212, 175, 55, 0.15);
       display: flex;
-      gap: 20px;
-    }
-
-    button {
-      background-color: #1abc9c;
-      color: #121212;
-      border: none;
-      padding: 14px 40px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+      cursor: default;
       user-select: none;
-      transition: background-color 0.25s ease;
     }
-
-    button:hover {
-      background-color: #16a085;
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 0 25px rgba(212, 175, 55, 0.5);
     }
-
-    /* Features list style */
-    ul.feature-list {
-      max-width: 600px;
-      list-style: none;
-      padding-left: 18px;
+    .feature-icon {
+      font-size: 3.2rem;
+      color: #d4af37;
+    }
+    .feature-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #eee;
+      user-select: text;
+    }
+    .feature-desc {
+      font-size: 0.95rem;
+      text-align: center;
       color: #bbb;
-      line-height: 1.5;
+      user-select: text;
     }
 
-    ul.feature-list li {
-      position: relative;
-      padding-left: 12px;
-      margin-bottom: 12px;
-      font-weight: 500;
+    /* Pricing Section */
+    #pricing h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #d4af37;
+      margin-bottom: 2rem;
+      user-select: text;
     }
-
-    ul.feature-list li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #1abc9c;
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .pricing-card {
+      background: #121212;
+      padding: 2rem;
+      border-radius: 20px;
+      width: 260px;
+      box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        0 0 30px rgba(212, 175, 55, 0.6);
+    }
+    .plan-name {
+      font-size: 1.5rem;
       font-weight: 700;
+      margin-bottom: 1rem;
+      color: #d4af37;
+      user-select: text;
+    }
+    .plan-price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #eee;
+      user-select: text;
+    }
+    .plan-desc {
+      font-size: 1rem;
+      color: #bbb;
+      text-align: center;
+      margin-bottom: 2rem;
+      user-select: text;
+    }
+    .plan-btn {
+      background: #d4af37;
+      color: #0a0a0a;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.3s ease;
       user-select: none;
     }
+    .plan-btn:hover,
+    .plan-btn:focus {
+      background: #b8972f;
+      outline: none;
+    }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      body {
-        flex-direction: column;
+    /* About Section */
+    #about h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #d4af37;
+      margin-bottom: 1.5rem;
+      user-select: text;
+    }
+    #about p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #bbb;
+      line-height: 1.6;
+      user-select: text;
+      text-align: center;
+    }
+
+    /* Contact Section */
+    #contact h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #d4af37;
+      margin-bottom: 2rem;
+      user-select: text;
+    }
+    #contact .socials {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 2rem;
+      user-select: none;
+    }
+    #contact .socials a {
+      color: #bbb;
+      transition: color 0.3s ease;
+    }
+    #contact .socials a:hover,
+    #contact .socials a:focus {
+      color: #d4af37;
+      outline: none;
+    }
+    #contact form {
+      margin-top: 2rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #contact input, #contact textarea {
+      background: #1f1f1f;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 15px;
+      color: #eee;
+      font-size: 1rem;
+      resize: none;
+      outline-offset: 3px;
+      transition: background 0.3s ease;
+    }
+    #contact input:focus, #contact textarea:focus {
+      background: #2a2a2a;
+      outline: 2px solid #d4af37;
+    }
+    #contact button {
+      background: #d4af37;
+      color: #0a0a0a;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    #contact button:hover,
+    #contact button:focus {
+      background: #b8972f;
+      outline: none;
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      border: 4px solid rgba(212, 175, 55, 0.2);
+      border-top: 4px solid #d4af37;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+      display: none;
+    }
+    .spinner.active {
+      display: block;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
       }
-      aside.sidebar {
+      #home h1 {
+        font-size: 2.4rem;
+      }
+      .features-grid {
+        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      }
+      .pricing-card {
         width: 100%;
-        flex-direction: row;
-        padding: 10px 0;
-        border-right: none;
-        border-bottom: 2px solid #1abc9c;
-      }
-      .logo {
-        margin: 0 30px 0 20px;
-        font-size: 1.4rem;
-        flex-shrink: 0;
-      }
-      nav.sidebar-nav {
-        flex-direction: row;
-        gap: 12px;
-        padding: 0 10px;
-        overflow-x: auto;
-      }
-      nav.sidebar-nav a {
-        padding: 10px 16px;
-        font-size: 0.95rem;
-      }
-      main.content {
-        padding: 20px 15px 40px;
       }
     }
   </style>
 </head>
 <body>
-  <aside class="sidebar" role="navigation" aria-label="Sidebar Navigation">
-    <div class="logo">grief.lol</div>
-    <nav class="sidebar-nav">
-      <a href="#" class="active" aria-current="page"><span class="icon">🏠</span>Dashboard</a>
-      <a href="#"><span class="icon">👤</span>Profiles</a>
-      <a href="#"><span class="icon">🎖️</span>Badges</a>
-      <a href="#"><span class="icon">🎵</span>Media</a>
-      <a href="#"><span class="icon">⚙️</span>Settings</a>
-    </nav>
-  </aside>
 
-  <main class="content" role="main">
-    <section class="hero">
-      <h1>Welcome to grief.lol</h1>
-      <p>Your platform for community, creativity, and chaos — all in one sleek place.</p>
-      <div class="btn-group">
-        <button>Get Started</button>
-        <button>Explore Features</button>
-      </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <div class="logo" tabindex="0">GRIEF</div>
+    <ul>
+      <li><a href="#home" tabindex="0">Home</a></li>
+      <li><a href="#features" tabindex="0">Features</a></li>
+      <li><a href="#pricing" tabindex="0">Pricing</a></li>
+      <li><a href="#about" tabindex="0">About</a></li>
+      <li><a href="#contact" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" role="main">
+
+    <!-- Home / Signup/Login -->
+    <section id="home" aria-label="Signup and login section">
+      <h1>Claim Your Vanity Username</h1>
+      <p>Sign up or log in to create your custom biolink profile. Showcase your badges, social links, and more!</p>
+
+      <form id="signupLoginForm" novalidate aria-describedby="form-error">
+        <div>
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="Enter username or email" autocomplete="username" required aria-required="true" />
+          <div class="error" id="usernameError" aria-live="assertive"></div>
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter password" autocomplete="current-password" required aria-required="true" />
+          <div class="error" id="passwordError" aria-live="assertive"></div>
+        </div>
+
+        <button type="submit" aria-label="Claim or login">Claim / Login</button>
+
+        <div class="spinner" id="loadingSpinner" role="status" aria-live="polite" aria-label="Loading"></div>
+
+        <div class="social-login" aria-label="Social login options">
+          <button type="button" class="social-btn" aria-label="Login with Google"><i class="fab fa-google"></i> Google</button>
+          <button type="button" class="social-btn" aria-label="Login with Facebook"><i class="fab fa-facebook"></i> Facebook</button>
+        </div>
+      </form>
     </section>
 
-    <section class="features">
-      <h2 style="color:#1abc9c; margin-bottom:20px; user-select:none;">Features at a glance</h2>
-      <ul class="feature-list">
-        <li>Custom profiles & vanity URLs</li>
-        <li>Interactive badges with fun effects</li>
-        <li>Embed music, videos & socials</li>
-        <li>Animated hover effects and sounds</li>
-      </ul>
-    </section>
-
-    <section class="info">
-      <p>At grief.lol, we bring you a clean, modern platform with powerful features to express yourself, connect, and thrive. From custom profiles to immersive badges and media, grief.lol is your digital playground.</p>
-    </section>
-  </main>
-</body>
-</html>
+    <!-- Features -->
+    <section id="features" aria-label="Features of the biolink website">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card" tabindex="0">
+          <i class="fas fa-user-circle feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Custom Profiles</h3>
+          <p class="feature-desc">Create unique biolink profiles with your own style and badges.</p>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <i class="fas fa-award feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Badges & Achievements</h3>
+          <p class="feature-desc">Showcase your special badges earned from various activities.</p>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <i class="fas fa-music feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Music Embeds</h3>
+          <p class="feature-desc">Embed your favorite music and playlists directly on your profile.</p>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <i class="fas fa-share-alt feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Social Media Links</h3>
+          <p class="feature-desc">Add your socials with clickable icons and custom URLs.</p>
+       
