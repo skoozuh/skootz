@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GRIEF Biolink</title>
+  <title>GRIEF | Claim Vanity</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0; padding: 0; box-sizing: border-box;
@@ -14,7 +13,7 @@
       background: #0a0a0a;
       color: #eee;
       font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,73 +22,61 @@
     }
     .container {
       background: #121212;
-      padding: 40px 30px;
+      padding: 50px 40px;
       border-radius: 20px;
       width: 100%;
-      max-width: 420px;
+      max-width: 400px;
       box-shadow:
-        0 0 20px rgba(255, 215, 55, 0.2),
-        0 8px 30px rgba(0,0,0,0.8);
+        0 0 20px rgba(212, 175, 55, 0.3),
+        0 8px 30px rgba(0,0,0,0.9);
       text-align: center;
-      user-select: text;
-    }
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 3px solid #d4af37;
-      object-fit: cover;
-      margin-bottom: 20px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
-    }
-    .avatar:hover {
-      transform: scale(1.1);
     }
     h1 {
       font-weight: 600;
-      font-size: 2.8rem;
-      margin-bottom: 8px;
-      color: #d4af37;
-      letter-spacing: 1.2px;
-    }
-    p.bio {
-      font-weight: 400;
-      font-size: 1rem;
-      color: #bbb;
+      font-size: 3rem;
       margin-bottom: 30px;
-      line-height: 1.5;
+      color: #d4af37;
+      letter-spacing: 1.5px;
       user-select: text;
     }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 30px;
-    }
-    .link-btn {
-      background: #222;
+    input[type="text"] {
+      width: 100%;
       padding: 15px 20px;
+      font-size: 1.1rem;
       border-radius: 12px;
-      color: #eee;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
+      border: none;
+      outline: none;
+      background: #1f1f1f;
+      color: white;
+      margin-bottom: 30px;
+      user-select: text;
+      transition: background 0.3s ease;
     }
-    .link-btn:hover {
+    input[type="text"]:focus {
+      background: #2a2a2a;
+    }
+    button {
+      width: 100%;
+      padding: 15px 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      border: none;
       background: #d4af37;
       color: #0a0a0a;
-      box-shadow: 0 6px 15px #d4af37;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: #b8972f;
     }
     .badges {
+      margin-top: 30px;
       display: flex;
       justify-content: center;
-      gap: 14px;
+      gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
     .badges img {
       width: 42px;
@@ -98,176 +85,55 @@
       background: rgba(255, 255, 255, 0.05);
       padding: 6px;
       cursor: pointer;
-      box-shadow: 0 0 8px rgba(0,0,0,0.5);
       transition: transform 0.25s ease, background 0.25s ease;
-      user-select: none;
     }
     .badges img:hover {
-      transform: scale(1.15);
+      transform: scale(1.2);
       background: rgba(255, 255, 255, 0.15);
       box-shadow: 0 0 12px #d4af37;
-    }
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 10px;
-    }
-    .socials a {
-      color: #bbb;
-      font-size: 1.6rem;
-      transition: color 0.3s ease;
-      user-select: none;
-    }
-    .socials a:hover {
-      color: #d4af37;
-    }
-    @media (max-width: 480px) {
-      .container {
-        padding: 30px 20px;
-        max-width: 90vw;
-      }
-      h1 {
-        font-size: 2.3rem;
-      }
-      .avatar {
-        width: 110px;
-        height: 110px;
-      }
-      .link-btn {
-        padding: 12px 15px;
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
 <body>
-  <main class="container" role="main" aria-label="Biolink profile">
-    <img
-      src="https://i.pravatar.cc/150?u=default"
-      alt="User avatar"
-      class="avatar"
-      id="avatar"
-      loading="lazy"
-      tabindex="0"
+  <div class="container" role="main" aria-label="Claim your vanity username">
+    <h1>GRIEF</h1>
+    <input
+      type="text"
+      id="vanityInput"
+      placeholder="Enter your vanity username..."
+      autocomplete="off"
+      spellcheck="false"
+      aria-label="Vanity username input"
     />
-    <h1 id="username">Loading...</h1>
-    <p class="bio" id="bio">Loading bio...</p>
+    <button id="claimBtn" aria-label="Claim your vanity username">Claim</button>
 
-    <div class="links" id="links">
-      <!-- Dynamic link buttons inserted here -->
+    <div class="badges" aria-label="Badges showcase">
+      <img src="assets/developer.png" title="Developer" alt="Developer badge" tabindex="0" />
+      <img src="assets/creator.png" title="Creator" alt="Creator badge" tabindex="0" />
+      <img src="assets/staff.png" title="Staff" alt="Staff badge" tabindex="0" />
+      <img src="assets/bugfinder.png" title="Bug Finder" alt="Bug Finder badge" tabindex="0" />
+      <img src="assets/oguser.png" title="OG User" alt="OG User badge" tabindex="0" />
     </div>
-
-    <div class="badges" aria-label="User badges" id="badges">
-      <!-- Badges inserted here -->
-    </div>
-
-    <div class="socials" aria-label="Social media links" id="socials">
-      <!-- Social icons inserted here -->
-    </div>
-  </main>
-
-  <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
+  </div>
 
   <script>
-    // Helper: create element with classes and props
-    function createEl(tag, options = {}) {
-      const el = document.createElement(tag);
-      if (options.classes) el.className = options.classes;
-      if (options.text) el.textContent = options.text;
-      if (options.html) el.innerHTML = options.html;
-      if (options.attrs) {
-        for (const [k,v] of Object.entries(options.attrs)) {
-          el.setAttribute(k, v);
-        }
+    const claimBtn = document.getElementById('claimBtn');
+    const vanityInput = document.getElementById('vanityInput');
+
+    function claimVanity() {
+      const username = vanityInput.value.trim();
+      if (!username) {
+        alert('Please enter a valid username.');
+        return;
       }
-      return el;
+      // Redirect to user.html with username param
+      window.location.href = `user.html?u=${encodeURIComponent(username.toLowerCase())}`;
     }
 
-    // Sample data — replace with dynamic fetching or URL params
-    const data = {
-      username: 'GRIEF',
-      avatar: 'assets/your-avatar.png', // Replace with your avatar
-      bio: 'Welcome to my custom biolink page! Click any link below to explore my socials and projects.',
-      links: [
-        { title: 'My Website', url: 'https://example.com' },
-        { title: 'YouTube', url: 'https://youtube.com/channel/yourchannel' },
-        { title: 'Discord', url: 'https://discord.gg/yourserver' }
-      ],
-      badges: [
-        { src: 'assets/developer.png', title: 'Developer' },
-        { src: 'assets/creator.png', title: 'Creator' },
-        { src: 'assets/staff.png', title: 'Staff' },
-        { src: 'assets/bugfinder.png', title: 'Bug Finder' },
-        { src: 'assets/oguser.png', title: 'OG User' }
-      ],
-      socials: [
-        { href: 'https://twitter.com/yourprofile', iconClass: 'fab fa-twitter', label: 'Twitter' },
-        { href: 'https://instagram.com/yourprofile', iconClass: 'fab fa-instagram', label: 'Instagram' },
-        { href: 'https://github.com/yourprofile', iconClass: 'fab fa-github', label: 'GitHub' },
-        { href: 'mailto:you@example.com', iconClass: 'fas fa-envelope', label: 'Email' }
-      ]
-    };
-
-    // Set username, avatar, bio
-    document.getElementById('username').textContent = data.username;
-    document.getElementById('avatar').src = data.avatar;
-    document.getElementById('avatar').alt = `${data.username} avatar`;
-    document.getElementById('bio').textContent = data.bio;
-
-    // Fill links container
-    const linksContainer = document.getElementById('links');
-    data.links.forEach(link => {
-      const a = createEl('a', {
-        classes: 'link-btn',
-        text: link.title,
-        attrs: {
-          href: link.url,
-          target: '_blank',
-          rel: 'noopener noreferrer',
-          tabindex: '0'
-        }
-      });
-      linksContainer.appendChild(a);
+    claimBtn.addEventListener('click', claimVanity);
+    vanityInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') claimVanity();
     });
-
-    // Fill badges container with hover sound
-    const badgesContainer = document.getElementById('badges');
-    const hoverSound = document.getElementById('hoverSound');
-
-    data.badges.forEach(badge => {
-      const img = createEl('img', {
-        attrs: {
-          src: badge.src,
-          title: badge.title,
-          alt: badge.title + ' badge',
-          tabindex: '0'
-        },
-        classes: ''
-      });
-      img.addEventListener('mouseenter', () => {
-        hoverSound.currentTime = 0;
-        hoverSound.play();
-      });
-      badgesContainer.appendChild(img);
-    });
-
-    // Fill socials container
-    const socialsContainer = document.getElementById('socials');
-    data.socials.forEach(social => {
-      const a = createEl('a', {
-        attrs: {
-          href: social.href,
-          target: '_blank',
-          rel: 'noopener noreferrer',
-          'aria-label': social.label,
-          tabindex: '0'
-        },
-        html: `<i class="${social.iconClass}"></i>`
-      });
-      socialsContainer.appendChild(a);
-    });
-
   </script>
 </body>
 </html>
