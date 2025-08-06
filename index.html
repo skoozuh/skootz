@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>grief.lol - Fresh Modern Layout</title>
+  <title>grief.lol - Sidebar Tab Layout</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -12,332 +12,218 @@
       margin: 0; padding: 0; box-sizing: border-box;
     }
 
-    body {
-      background-color: #0a0a0a;
-      color: #eee;
+    body, html {
+      height: 100%;
+      background-color: #121212;
       font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
+      color: #ddd;
       display: flex;
-      flex-direction: column;
+      overflow: hidden;
     }
 
-    /* Header */
-    header {
+    /* Sidebar */
+    aside.sidebar {
+      width: 220px;
+      background-color: #1f1f1f;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 40px;
-      background: #111111;
-      box-shadow: 0 1px 6px rgba(58, 123, 213, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      flex-direction: column;
+      padding-top: 30px;
+      border-right: 2px solid #1abc9c;
       user-select: none;
     }
 
     .logo {
       font-weight: 700;
-      font-size: 1.7rem;
-      color: #3a7bd5;
+      font-size: 1.8rem;
+      color: #1abc9c;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 40px;
+      cursor: default;
     }
 
-    nav a {
-      color: #3a7bd5;
-      text-decoration: none;
-      font-weight: 600;
-      margin-left: 28px;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #5590f7;
-    }
-
-    /* Main container */
-    main {
-      flex: 1;
-      max-width: 1100px;
-      margin: 40px auto 60px;
-      padding: 0 20px;
+    nav.sidebar-nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0 20px;
     }
 
-    /* Hero Left */
-    .hero-left {
-      flex: 1 1 480px;
-      max-width: 480px;
-    }
-
-    .hero-left h1 {
-      font-size: 4.2rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: #3a7bd5;
-      text-transform: uppercase;
-      margin-bottom: 0.4em;
-      user-select: none;
-      line-height: 1.1;
-    }
-
-    .hero-left p {
-      font-size: 1.3rem;
+    nav.sidebar-nav a {
+      text-decoration: none;
       color: #bbb;
-      margin-bottom: 2em;
-      line-height: 1.4;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 12px 18px;
+      border-radius: 8px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
     }
 
+    nav.sidebar-nav a:hover,
+    nav.sidebar-nav a.active {
+      background-color: #1abc9c;
+      color: #121212;
+      font-weight: 700;
+    }
+
+    /* Simple icon placeholders */
+    nav.sidebar-nav a span.icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    /* Main content */
+    main.content {
+      flex: 1;
+      padding: 40px 50px;
+      overflow-y: auto;
+      user-select: none;
+    }
+
+    main.content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #1abc9c;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    main.content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ccc;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    /* Section style */
+    section {
+      margin-bottom: 40px;
+    }
+
+    /* Buttons */
     .btn-group {
       display: flex;
       gap: 20px;
     }
 
     button {
-      background-color: #3a7bd5;
-      color: #0a0a0a;
+      background-color: #1abc9c;
+      color: #121212;
       border: none;
-      padding: 16px 48px;
+      padding: 14px 40px;
       font-weight: 700;
-      font-size: 1.15rem;
-      border-radius: 14px;
+      font-size: 1.1rem;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 5px 15px rgba(58, 123, 213, 0.3);
       user-select: none;
+      transition: background-color 0.25s ease;
     }
 
     button:hover {
-      background-color: #5590f7;
-      box-shadow: 0 8px 25px rgba(58, 123, 213, 0.5);
-      transform: translateY(-5px);
+      background-color: #16a085;
     }
 
-    /* Hero Right floating card */
-    .hero-right {
-      flex: 1 1 400px;
-      max-width: 400px;
-      background: #111111;
-      border-radius: 18px;
-      padding: 30px 25px;
-      box-shadow: 0 10px 30px rgba(58, 123, 213, 0.25);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      cursor: default;
-      user-select: none;
-    }
-
-    .hero-right:hover {
-      box-shadow: 0 16px 40px rgba(58, 123, 213, 0.45);
-      transform: translateY(-12px);
-    }
-
-    .hero-right h3 {
-      color: #3a7bd5;
-      font-size: 1.7rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .feature-list {
+    /* Features list style */
+    ul.feature-list {
+      max-width: 600px;
       list-style: none;
-      color: #ccc;
-      font-size: 1rem;
+      padding-left: 18px;
+      color: #bbb;
       line-height: 1.5;
     }
 
-    .feature-list li {
-      margin-bottom: 14px;
+    ul.feature-list li {
       position: relative;
-      padding-left: 28px;
-      user-select: none;
+      padding-left: 12px;
+      margin-bottom: 12px;
+      font-weight: 500;
     }
 
-    /* Simple circle icon before each */
-    .feature-list li::before {
-      content: '•';
+    ul.feature-list li::before {
+      content: "→";
       position: absolute;
       left: 0;
-      top: 2px;
-      color: #3a7bd5;
-      font-size: 1.4rem;
-      line-height: 1;
-    }
-
-    /* Features grid */
-    .features-grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-      margin-top: 40px;
-      user-select: none;
-    }
-
-    .feature-card {
-      background: #111111;
-      border-radius: 14px;
-      padding: 24px 22px;
-      box-shadow: 0 8px 22px rgba(58, 123, 213, 0.2);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-      cursor: default;
-      color: #ccc;
-    }
-
-    .feature-card:hover {
-      background-color: #1a2a5b;
-      box-shadow: 0 14px 36px rgba(58, 123, 213, 0.4);
-      transform: translateY(-8px);
-    }
-
-    .feature-card h4 {
-      color: #3a7bd5;
-      font-size: 1.25rem;
-      margin-bottom: 14px;
+      top: 0;
+      color: #1abc9c;
       font-weight: 700;
       user-select: none;
     }
 
-    .feature-card p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    /* Info section below features */
-    .info-section {
-      max-width: 850px;
-      margin: 50px auto 0;
-      padding: 0 20px;
-      color: #aaa;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: center;
-      user-select: none;
-    }
-
-    /* Footer */
-    footer {
-      background: #111111;
-      padding: 18px 40px;
-      text-align: center;
-      color: #666;
-      font-size: 0.85rem;
-      user-select: none;
-      box-shadow: 0 -1px 6px rgba(58, 123, 213, 0.3);
-      margin-top: auto;
-    }
-
-    .social-icons {
-      margin-bottom: 14px;
-    }
-
-    .social-icons a {
-      color: #3a7bd5;
-      margin: 0 14px;
-      font-size: 1.3rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      user-select: none;
-    }
-
-    .social-icons a:hover {
-      color: #5590f7;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 960px) {
-      main {
+    /* Responsive */
+    @media (max-width: 700px) {
+      body {
         flex-direction: column;
-        margin: 30px auto 50px;
-        padding: 0 20px;
       }
-      .hero-left, .hero-right {
-        max-width: 100%;
-        flex: none;
+      aside.sidebar {
+        width: 100%;
+        flex-direction: row;
+        padding: 10px 0;
+        border-right: none;
+        border-bottom: 2px solid #1abc9c;
       }
-      .hero-right {
-        margin-top: 40px;
+      .logo {
+        margin: 0 30px 0 20px;
+        font-size: 1.4rem;
+        flex-shrink: 0;
       }
-    }
-
-    @media (max-width: 480px) {
-      .hero-left h1 {
-        font-size: 2.8rem;
+      nav.sidebar-nav {
+        flex-direction: row;
+        gap: 12px;
+        padding: 0 10px;
+        overflow-x: auto;
       }
-      .hero-left p {
-        font-size: 1rem;
+      nav.sidebar-nav a {
+        padding: 10px 16px;
+        font-size: 0.95rem;
       }
-      button {
-        font-size: 1rem;
-        padding: 14px 32px;
+      main.content {
+        padding: 20px 15px 40px;
       }
     }
   </style>
 </head>
 <body>
-<header>
-  <div class="logo">grief.lol</div>
-  <nav>
-    <a href="#">Sign Up</a>
-    <a href="#">Login</a>
-  </nav>
-</header>
+  <aside class="sidebar" role="navigation" aria-label="Sidebar Navigation">
+    <div class="logo">grief.lol</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" aria-current="page"><span class="icon">🏠</span>Dashboard</a>
+      <a href="#"><span class="icon">👤</span>Profiles</a>
+      <a href="#"><span class="icon">🎖️</span>Badges</a>
+      <a href="#"><span class="icon">🎵</span>Media</a>
+      <a href="#"><span class="icon">⚙️</span>Settings</a>
+    </nav>
+  </aside>
 
-<main>
-  <section class="hero-left">
-    <h1>Welcome to grief.lol</h1>
-    <p>Your ultimate platform for community, creativity, and chaos — all in one place.</p>
-    <div class="btn-group">
-      <button>Get Started</button>
-      <button>Explore Features</button>
-    </div>
-  </section>
+  <main class="content" role="main">
+    <section class="hero">
+      <h1>Welcome to grief.lol</h1>
+      <p>Your platform for community, creativity, and chaos — all in one sleek place.</p>
+      <div class="btn-group">
+        <button>Get Started</button>
+        <button>Explore Features</button>
+      </div>
+    </section>
 
-  <section class="hero-right">
-    <h3>Why grief.lol?</h3>
-    <ul class="feature-list">
-      <li>Custom profiles & vanity URLs</li>
-      <li>Interactive badges with fun effects</li>
-      <li>Embed music, videos & socials</li>
-      <li>Animated hover effects and sounds</li>
-    </ul>
-  </section>
+    <section class="features">
+      <h2 style="color:#1abc9c; margin-bottom:20px; user-select:none;">Features at a glance</h2>
+      <ul class="feature-list">
+        <li>Custom profiles & vanity URLs</li>
+        <li>Interactive badges with fun effects</li>
+        <li>Embed music, videos & socials</li>
+        <li>Animated hover effects and sounds</li>
+      </ul>
+    </section>
 
-  <section class="features-grid" aria-label="Features">
-    <article class="feature-card">
-      <h4>Custom Profiles</h4>
-      <p>Create a unique presence with personalized profiles and vanity URLs.</p>
-    </article>
-    <article class="feature-card">
-      <h4>Interactive Badges</h4>
-      <p>Show off badges with animations and sounds on hover and clicks.</p>
-    </article>
-    <article class="feature-card">
-      <h4>Media Embeds</h4>
-      <p>Add music, videos, or social media links easily to your profile.</p>
-    </article>
-    <article class="feature-card">
-      <h4>Animated Effects</h4>
-      <p>Enjoy smooth hover animations and subtle sound effects for interactions.</p>
-    </article>
-  </section>
-</main>
-
-<section class="info-section">
-  <p>At grief.lol, we combine sleek design with innovative features to create a platform that’s as dynamic as you are. Whether networking, showcasing talents, or just having fun, grief.lol brings your online presence to life.</p>
-</section>
-
-<footer>
-  <div class="social-icons" aria-label="Social media links">
-    <a href="#" aria-label="Twitter">🐦</a>
-    <a href="#" aria-label="Discord">💬</a>
-    <a href="#" aria-label="Instagram">📸</a>
-  </div>
-  &copy; 2025 grief.lol. All rights reserved.
-</footer>
+    <section class="info">
+      <p>At grief.lol, we bring you a clean, modern platform with powerful features to express yourself, connect, and thrive. From custom profiles to immersive badges and media, grief.lol is your digital playground.</p>
+    </section>
+  </main>
 </body>
 </html>
