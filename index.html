@@ -1,109 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dark Modern Front Page</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>grief.lol - Dark Modern Front Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-  /* Reset */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-
-  body {
-    background-color: #0a0a0a;
-    color: #eee;
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  header {
-    padding: 20px 40px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  nav a {
-    color: #d4af37;
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 30px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-
-  nav a:hover {
-    color: #f0d36d;
-  }
-
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5em;
-    user-select: none;
-  }
-
-  p {
-    font-size: 1.25rem;
-    margin-bottom: 2em;
-    color: #bbb;
-    max-width: 600px;
-  }
-
-  .btn-group {
-    display: flex;
-    gap: 20px;
-  }
-
-  button {
-    background-color: #d4af37;
-    color: #0a0a0a;
-    border: none;
-    padding: 15px 40px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-
-  button:hover {
-    background-color: #f0d36d;
-  }
-
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 2.5rem;
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-    p {
-      font-size: 1rem;
-      max-width: 90%;
-    }
-    .btn-group {
+
+    body {
+      background-color: #0a0a0a;
+      color: #eee;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+      background: #111111;
+    }
+
+    nav a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 30px;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f0d36d;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-bottom: 60px;
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5em;
+      user-select: none;
+      color: #d4af37;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: #bbb;
+      max-width: 700px;
+      margin: 0 auto 2.5em;
+      line-height: 1.4;
+    }
+
+    .btn-group {
+      display: inline-flex;
+      gap: 20px;
+    }
+
     button {
-      width: 100%;
-      padding: 15px 0;
+      background-color: #d4af37;
+      color: #0a0a0a;
+      border: none;
+      padding: 18px 50px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      box-shadow: 0 4px 6px rgb(212 175 55 / 0.5);
     }
-  }
-</style>
+
+    button:hover {
+      background-color: #f0d36d;
+      box-shadow: 0 6px 10px rgb(240 211 109 / 0.7);
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 80px;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      background: #111111;
+      border-radius: 15px;
+      padding: 30px 25px;
+      flex: 1 1 30%;
+      min-width: 260px;
+      box-shadow: 0 0 15px rgb(212 175 55 / 0.15);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      box-shadow: 0 0 25px rgb(212 175 55 / 0.35);
+    }
+
+    .feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #d4af37;
+    }
+
+    .feature p {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    /* Info Section */
+    .info {
+      max-width: 800px;
+      margin: 0 auto 80px;
+      font-size: 1.125rem;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #111111;
+      padding: 20px 40px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Social Links */
+    .social-links {
+      margin-bottom: 12px;
+    }
+
+    .social-links a {
+      color: #d4af37;
+      margin: 0 12px;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #f0d36d;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .features {
+        flex-direction: column;
+        gap: 25px;
+      }
+      .feature {
+        max-width: 90vw;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero p {
+        font-size: 1.125rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 15px 30px;
+      }
+    }
+  </style>
 </head>
 <body>
 <header>
@@ -114,12 +202,42 @@
 </header>
 
 <main>
-  <h1>GUNS.LOL</h1>
-  <p>The place to discover, trade, and master your favorite in-game weapons.</p>
-  <div class="btn-group">
-    <button>Get Started</button>
-    <button>Learn More</button>
-  </div>
+  <section class="hero">
+    <h1>grief.lol</h1>
+    <p>Your ultimate platform for community, creativity, and chaos — all in one place.</p>
+    <div class="btn-group">
+      <button>Get Started</button>
+      <button>Explore Features</button>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Custom Profiles</h3>
+      <p>Create your own unique presence with customizable profiles and vanity URLs.</p>
+    </div>
+    <div class="feature">
+      <h3>Interactive Badges</h3>
+      <p>Earn and showcase badges with fun animations and sounds on hover and click.</p>
+    </div>
+    <div class="feature">
+      <h3>Embed Media</h3>
+      <p>Seamlessly add music, videos, or social media links to make your profile pop.</p>
+    </div>
+  </section>
+
+  <section class="info">
+    <p>At grief.lol, we believe in combining cutting-edge features with a sleek, modern design to offer you an immersive experience that stands out. Whether you're here to network, showcase your talents, or just have fun, grief.lol has got your back.</p>
+  </section>
 </main>
+
+<footer>
+  <div class="social-links" aria-label="Social media links">
+    <a href="#" aria-label="Twitter">🐦</a>
+    <a href="#" aria-label="Discord">💬</a>
+    <a href="#" aria-label="Instagram">📸</a>
+  </div>
+  &copy; 2025 grief.lol. All rights reserved.
+</footer>
 </body>
 </html>
