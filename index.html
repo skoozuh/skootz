@@ -3,136 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GRIEF | Claim Vanity</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <title>GRIEF</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #0a0a0a;
-      color: #eee;
       font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #121212, #000000);
+      color: white;
       height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 20px;
-      user-select: none;
-    }
-    .container {
-      background: #121212;
-      padding: 50px 40px;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow:
-        0 0 20px rgba(212, 175, 55, 0.3),
-        0 8px 30px rgba(0,0,0,0.9);
-      text-align: center;
+      justify-content: center;
+      flex-direction: column;
     }
     h1 {
-      font-weight: 600;
       font-size: 3rem;
-      margin-bottom: 30px;
-      color: #d4af37;
-      letter-spacing: 1.5px;
-      user-select: text;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
-    input[type="text"] {
-      width: 100%;
-      padding: 15px 20px;
-      font-size: 1.1rem;
-      border-radius: 12px;
+    input {
+      padding: 12px 20px;
+      font-size: 1rem;
       border: none;
+      border-radius: 10px;
       outline: none;
       background: #1f1f1f;
       color: white;
-      margin-bottom: 30px;
-      user-select: text;
-      transition: background 0.3s ease;
-    }
-    input[type="text"]:focus {
-      background: #2a2a2a;
+      width: 250px;
+      margin-bottom: 20px;
     }
     button {
-      width: 100%;
-      padding: 15px 20px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border-radius: 12px;
+      padding: 12px 20px;
       border: none;
-      background: #d4af37;
-      color: #0a0a0a;
+      border-radius: 10px;
+      font-weight: 600;
+      background: white;
+      color: black;
       cursor: pointer;
-      transition: background 0.3s ease;
-      user-select: none;
+      transition: 0.2s;
     }
     button:hover {
-      background: #b8972f;
+      background: #ccc;
     }
     .badges {
-      margin-top: 30px;
       display: flex;
-      justify-content: center;
-      gap: 18px;
+      gap: 10px;
+      margin-top: 25px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .badges img {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 6px;
-      cursor: pointer;
-      transition: transform 0.25s ease, background 0.25s ease;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      padding: 5px;
+      transition: 0.2s;
     }
     .badges img:hover {
-      transform: scale(1.2);
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 12px #d4af37;
+      transform: scale(1.1);
+    }
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="Claim your vanity username">
-    <h1>GRIEF</h1>
-    <input
-      type="text"
-      id="vanityInput"
-      placeholder="Enter your vanity username..."
-      autocomplete="off"
-      spellcheck="false"
-      aria-label="Vanity username input"
-    />
-    <button id="claimBtn" aria-label="Claim your vanity username">Claim</button>
+  <h1>GRIEF</h1>
+  <input type="text" placeholder="Enter your name..." id="vanityInput">
+  <button onclick="claimVanity()">Claim</button>
 
-    <div class="badges" aria-label="Badges showcase">
-      <img src="assets/developer.png" title="Developer" alt="Developer badge" tabindex="0" />
-      <img src="assets/creator.png" title="Creator" alt="Creator badge" tabindex="0" />
-      <img src="assets/staff.png" title="Staff" alt="Staff badge" tabindex="0" />
-      <img src="assets/bugfinder.png" title="Bug Finder" alt="Bug Finder badge" tabindex="0" />
-      <img src="assets/oguser.png" title="OG User" alt="OG User badge" tabindex="0" />
-    </div>
+  <div class="badges">
+    <img src="assets/developer.png" title="Developer">
+    <img src="assets/creator.png" title="Creator">
+    <img src="assets/staff.png" title="Staff">
+    <img src="assets/bugfinder.png" title="Bug Finder">
+    <img src="assets/oguser.png" title="OG User">
   </div>
 
+  <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
+
   <script>
-    const claimBtn = document.getElementById('claimBtn');
-    const vanityInput = document.getElementById('vanityInput');
-
     function claimVanity() {
-      const username = vanityInput.value.trim();
-      if (!username) {
-        alert('Please enter a valid username.');
-        return;
+      const input = document.getElementById('vanityInput');
+      const username = input.value.trim();
+      if (username) {
+        window.location.href = `user.html?u=${encodeURIComponent(username)}`;
       }
-      // Redirect to user.html with username param
-      window.location.href = `user.html?u=${encodeURIComponent(username.toLowerCase())}`;
     }
-
-    claimBtn.addEventListener('click', claimVanity);
-    vanityInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') claimVanity();
+    // Optional: add hover sound
+    document.querySelectorAll('.badges img').forEach(img => {
+      img.addEventListener('mouseover', () => {
+        const sound = document.getElementById('hoverSound');
+        if (sound) sound.play();
+      });
     });
   </script>
 </body>
