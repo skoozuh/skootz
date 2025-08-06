@@ -5,112 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GRIEF</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at center, #121212, #000000);
-      color: white;
+      background-color: #000;
+      color: #fff;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      gap: 25px;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      text-shadow: 0 0 12px rgba(255,255,255,0.25);
-      display: flex;
       align-items: center;
-      gap: 12px;
+      overflow: hidden;
+      position: relative;
+      padding: 0 20px;
     }
-    h1 img.crown {
-      width: 40px;
-      height: 40px;
-      filter: drop-shadow(0 0 3px gold);
+
+    /* Large background text behind input */
+    .background-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 900;
+      font-size: 12rem;
+      color: #111;
+      user-select: none;
+      pointer-events: none;
+      line-height: 1;
+      letter-spacing: 0.1em;
+      font-family: 'Poppins', sans-serif;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0.15;
+      z-index: 0;
     }
-    input {
-      padding: 14px 22px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 12px;
-      outline: none;
-      background: #1f1f1f;
-      color: white;
-      width: 280px;
-      max-width: 100vw;
-      transition: background 0.3s;
-    }
-    input:focus {
-      background: #2c2c2c;
-    }
-    button {
-      padding: 14px 28px;
-      border: none;
-      border-radius: 12px;
+
+    /* Top left logo */
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
       font-weight: 700;
-      background: gold;
-      color: black;
+      font-size: 1.8rem;
+      color: #5fffc5; /* minty green */
+      letter-spacing: 0.15em;
+      user-select: none;
+      z-index: 10;
+      cursor: default;
+    }
+
+    /* Top right buttons container */
+    .top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .top-right button {
+      background: none;
+      border: 1.8px solid #fff;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
       cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.3s;
-      box-shadow: 0 0 10px gold;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
-    button:hover {
-      background: #ffdd55;
+
+    .top-right button:last-child {
+      background: white;
+      color: black;
+      border: none;
     }
+
+    .top-right button:last-child:hover {
+      background: #eee;
+    }
+
+    .top-right button:first-child:hover {
+      background: white;
+      color: black;
+    }
+
+    /* Main input + button container */
+    .input-container {
+      display: flex;
+      border: 1.8px solid white;
+      border-radius: 9999px;
+      overflow: hidden;
+      width: 350px;
+      max-width: 90vw;
+      background-color: transparent;
+      z-index: 1;
+    }
+
+    input[type="text"] {
+      flex-grow: 1;
+      border: none;
+      padding: 14px 20px;
+      font-size: 1rem;
+      color: white;
+      background: transparent;
+      outline-offset: 2px;
+      font-weight: 500;
+    }
+
+    input[type="text"]::placeholder {
+      color: #999;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+    }
+
+    button.claim-btn {
+      background-color: white;
+      border: none;
+      padding: 14px 28px;
+      font-weight: 700;
+      cursor: pointer;
+      color: black;
+      font-size: 1rem;
+      transition: background-color 0.25s ease;
+    }
+
+    button.claim-btn:hover {
+      background-color: #ddd;
+    }
+
+    /* Badges below input */
     .badges {
+      margin-top: 32px;
       display: flex;
       gap: 14px;
-      flex-wrap: wrap;
       justify-content: center;
-      max-width: 400px;
+      flex-wrap: wrap;
+      max-width: 350px;
+      z-index: 1;
     }
+
     .badges img {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.05);
-      padding: 6px;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: contain;
+      cursor: default;
+      user-select: none;
+      filter: brightness(0.8);
+      transition: filter 0.2s ease;
     }
+
     .badges img:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 12px gold;
-    }
-    audio {
-      display: none;
+      filter: brightness(1);
     }
   </style>
 </head>
 <body>
-  <h1>
-    GRIEF
-    <img class="crown" src="assets/crownw.png" alt="Crown Icon" />
-  </h1>
 
-  <input type="text" placeholder="Enter your name..." id="vanityInput" aria-label="Enter your name" />
-  <button onclick="claimVanity()">Claim</button>
+  <div class="logo">GRIEF</div>
 
-  <div class="badges" aria-label="Badges">
-    <img src="assets/developer.png" title="Developer" alt="Developer badge" />
-    <img src="assets/creator.png" title="Creator" alt="Creator badge" />
-    <img src="assets/staff.png" title="Staff" alt="Staff badge" />
-    <img src="assets/bugfinder.png" title="Bug Finder" alt="Bug Finder badge" />
-    <img src="assets/oguser.png" title="OG User" alt="OG User badge" />
-    <img src="assets/booster.png" title="Booster" alt="Booster badge" />
-    <img src="assets/donator.png" title="Donator" alt="Donator badge" />
-    <img src="assets/trophy.png" title="Trophy" alt="Trophy badge" />
-    <img src="assets/artist.png" title="Artist" alt="Artist badge" />
+  <div class="top-right">
+    <button>Sign up</button>
+    <button>Log in</button>
   </div>
 
-  <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
+  <div class="background-text" aria-hidden="true">GRIEF GRIEF GRIEF</div>
+
+  <div class="input-container">
+    <input type="text" id="vanityInput" placeholder="Enter vanity" aria-label="Enter vanity name" />
+    <button class="claim-btn" onclick="claimVanity()">Claim</button>
+  </div>
+
+  <div class="badges" aria-label="Badges">
+    <img src="assets/developer.png" alt="Developer badge" title="Developer" />
+    <img src="assets/creator.png" alt="Creator badge" title="Creator" />
+    <img src="assets/staff.png" alt="Staff badge" title="Staff" />
+    <img src="assets/oguser.png" alt="OG User badge" title="OG User" />
+  </div>
 
   <script>
     function claimVanity() {
@@ -120,12 +199,6 @@
         window.location.href = `user.html?u=${encodeURIComponent(username)}`;
       }
     }
-    document.querySelectorAll('.badges img').forEach(img => {
-      img.addEventListener('mouseover', () => {
-        const sound = document.getElementById('hoverSound');
-        if (sound) sound.play();
-      });
-    });
   </script>
 </body>
 </html>
