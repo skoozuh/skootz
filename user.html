@@ -2,148 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GRIEF Profile</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@yourname | GRIEF</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at center, #0c0c0c, #000);
-      color: white;
-      min-height: 100vh;
+      background-color: #0f0f0f;
+      color: #fff;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 30px;
+      justify-content: center;
+      min-height: 100vh;
     }
 
-    .profile-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 30px;
+    .card {
+      background: rgba(30,30,30,0.75);
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
       text-align: center;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      width: 100%;
-      max-width: 440px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
     }
 
-    .profile-card img.pfp {
-      width: 100px;
-      height: 100px;
-      border-radius: 100%;
-      border: 2px solid white;
-      margin-bottom: 15px;
+    .vanity {
+      font-size: 1rem;
+      color: #777;
+      margin-bottom: 0.4rem;
     }
 
     .username {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 0.4rem;
     }
 
-    .badge-row {
+    .owner {
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #d4af37, #ffd54f, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .owner img {
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
+
+    .badges {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0;
+      gap: 0.6rem;
     }
 
-    .badge-row img {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      padding: 4px;
-      transition: 0.2s ease;
-      cursor: default;
-    }
-
-    .badge-row img:hover {
-      transform: scale(1.1);
-    }
-
-    .social-buttons {
-      margin-top: 20px;
-    }
-
-    .social-buttons a {
-      display: inline-block;
-      margin: 6px;
-      padding: 10px 16px;
-      background: white;
-      color: black;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s ease;
-    }
-
-    .social-buttons a:hover {
-      background: #A8FFD7;
-    }
-
-    .media-embeds {
-      margin-top: 25px;
+    .badge {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 0.8rem;
+      border-radius: 12px;
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
 
-    .media-embeds iframe {
-      width: 100%;
-      height: 80px;
-      border-radius: 14px;
-      border: none;
+    .badge img {
+      width: 20px;
+      height: 20px;
     }
 
-    @media (max-width: 500px) {
-      .profile-card {
-        padding: 20px;
-      }
+    .links {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      transition: background 0.2s ease;
+    }
+
+    .links a:hover {
+      background: rgba(255,255,255,0.15);
     }
   </style>
 </head>
 <body>
-  <div class="profile-card">
-    <img class="pfp" src="assets/pfp.png" alt="Profile Picture">
-    <div class="username" id="username">@user</div>
+  <div class="card">
+    <div class="vanity">grief.xyz/yourname</div>
+    <div class="username">@yourname</div>
 
-    <div class="badge-row">
-      <img src="assets/developer.png" title="Developer">
-      <img src="assets/creative.png" title="Creative">
-      <img src="assets/oguser.png" title="OG User">
-      <img src="assets/donator.png" title="Donator">
-      <img src="assets/staff.png" title="Staff">
+    <div class="owner">
+      Owner <img src="assets/crownw.png" alt="Crown Icon" />
     </div>
 
-    <div class="social-buttons">
-      <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">Last.fm</a>
+    <div class="badges">
+      <div class="badge"><img src="assets/artist.png" alt="Artist" /> Artist</div>
+      <div class="badge"><img src="assets/booster.png" alt="Booster" /> Booster</div>
+      <div class="badge"><img src="assets/creative.png" alt="Creative" /> Creative</div>
     </div>
 
-    <div class="media-embeds">
-      <!-- Dear Mama by Nino Paid embed -->
-      <iframe 
-        src="https://open.spotify.com/embed/track/6rEaDfe9hFb5fpFJsRxU3I?utm_source=generator" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-      </iframe>
+    <div class="links">
+      <a href="https://soundcloud.com/" target="_blank">SoundCloud</a>
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+      <a href="https://tiktok.com/" target="_blank">TikTok</a>
     </div>
   </div>
-
-  <script>
-    const queryParams = new URLSearchParams(window.location.search);
-    const vanity = queryParams.get("u");
-    const usernameEl = document.getElementById("username");
-    if (vanity) {
-      usernameEl.textContent = `@${vanity}`;
-    }
-  </script>
 </body>
 </html>
