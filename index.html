@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GRIEF</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at center, #121212, #000000);
@@ -18,15 +21,15 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      padding: 20px;
+      text-align: center;
     }
-
     h1 {
       font-size: 3rem;
       font-weight: 600;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
-
     input {
       padding: 12px 20px;
       font-size: 1rem;
@@ -37,8 +40,11 @@
       color: white;
       width: 250px;
       margin-bottom: 20px;
+      transition: background-color 0.3s;
     }
-
+    input:focus {
+      background-color: #2a2a2a;
+    }
     button {
       padding: 12px 20px;
       border: none;
@@ -47,34 +53,32 @@
       background: white;
       color: black;
       cursor: pointer;
-      transition: 0.2s;
+      transition: background-color 0.2s;
+      width: 250px;
+      margin-bottom: 25px;
     }
-
     button:hover {
       background: #ccc;
     }
-
     .badges {
       display: flex;
       gap: 10px;
-      margin-top: 25px;
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .badges img {
       width: 36px;
       height: 36px;
       border-radius: 8px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       padding: 5px;
-      transition: 0.2s;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
     }
-
     .badges img:hover {
       transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.15);
     }
-
     audio {
       display: none;
     }
@@ -83,35 +87,35 @@
 <body>
   <h1>GRIEF</h1>
 
-  <input type="text" placeholder="Enter your name..." id="vanityInput">
-  <button onclick="claimVanity()">Claim</button>
+  <input type="text" id="vanityInput" placeholder="Enter your name..." autocomplete="off" />
+  <button id="claimBtn">Claim</button>
 
   <div class="badges">
-    <img src="assets/developer.png" title="Developer">
-    <img src="assets/creator.png" title="Creator">
-    <img src="assets/staff.png" title="Staff">
-    <img src="assets/bugfinder.png" title="Bug Finder">
-    <img src="assets/oguser.png" title="OG User">
+    <img src="assets/developer.png" title="Developer" alt="Developer Badge" />
+    <img src="assets/creator.png" title="Creator" alt="Creator Badge" />
+    <img src="assets/staff.png" title="Staff" alt="Staff Badge" />
+    <img src="assets/bugfinder.png" title="Bug Finder" alt="Bug Finder Badge" />
+    <img src="assets/oguser.png" title="OG User" alt="OG User Badge" />
   </div>
 
   <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
 
   <script>
-    function claimVanity() {
-      const input = document.getElementById('vanityInput');
+    const input = document.getElementById('vanityInput');
+    const button = document.getElementById('claimBtn');
+    const hoverSound = document.getElementById('hoverSound');
+
+    button.addEventListener('click', () => {
       const username = input.value.trim().toLowerCase();
       if (username) {
         window.location.href = `user.html?u=${encodeURIComponent(username)}`;
       }
-    }
+    });
 
     document.querySelectorAll('.badges img').forEach(img => {
       img.addEventListener('mouseover', () => {
-        const sound = document.getElementById('hoverSound');
-        if (sound) {
-          sound.currentTime = 0;
-          sound.play();
-        }
+        hoverSound.currentTime = 0;
+        hoverSound.play();
       });
     });
   </script>
