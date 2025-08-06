@@ -3,46 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>@yourname | GRIEF</title>
+  <title>GRIEF | User</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #0f0f0f;
-      color: #fff;
+      background: radial-gradient(circle at center, #121212, #000000);
+      color: white;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-    }
-
-    .card {
-      background: rgba(30,30,30,0.75);
-      padding: 2rem;
-      border-radius: 16px;
-      max-width: 400px;
-      width: 90%;
+      flex-direction: column;
       text-align: center;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    }
-
-    .vanity {
-      font-size: 1rem;
-      color: #777;
-      margin-bottom: 0.4rem;
     }
 
     .username {
       font-size: 2rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 10px;
+    }
+
+    .vanity {
+      font-size: 1rem;
+      color: #999;
+      margin-bottom: 20px;
     }
 
     .owner {
@@ -54,79 +42,74 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
     }
 
     .owner img {
       width: 22px;
       height: 22px;
-      vertical-align: middle;
     }
 
     .badges {
       display: flex;
-      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
       flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .badge {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 0.5rem 0.8rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .badge img {
-      width: 20px;
-      height: 20px;
-    }
-
-    .links {
-      margin-top: 1.8rem;
-      display: flex;
       justify-content: center;
-      gap: 1rem;
     }
 
-    .links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      padding: 0.4rem 0.8rem;
+    .badges img {
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
-      background: rgba(255,255,255,0.08);
-      transition: background 0.2s ease;
+      background: rgba(255,255,255,0.05);
+      padding: 5px;
+      transition: 0.2s;
     }
 
-    .links a:hover {
-      background: rgba(255,255,255,0.15);
+    .badges img:hover {
+      transform: scale(1.1);
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="vanity">grief.xyz/yourname</div>
-    <div class="username">@yourname</div>
+  <div class="username" id="displayName">@username</div>
+  <div class="vanity" id="vanityLink">grief.xyz/username</div>
 
-    <div class="owner">
-      Owner <img src="assets/crownw.png" alt="Crown Icon" />
-    </div>
-
-    <div class="badges">
-      <div class="badge"><img src="assets/artist.png" alt="Artist" /> Artist</div>
-      <div class="badge"><img src="assets/booster.png" alt="Booster" /> Booster</div>
-      <div class="badge"><img src="assets/creative.png" alt="Creative" /> Creative</div>
-    </div>
-
-    <div class="links">
-      <a href="https://soundcloud.com/" target="_blank">SoundCloud</a>
-      <a href="https://instagram.com/" target="_blank">Instagram</a>
-      <a href="https://tiktok.com/" target="_blank">TikTok</a>
-    </div>
+  <div class="owner">
+    Owner <img src="assets/crownw.png" alt="Crown">
   </div>
+
+  <div class="badges">
+    <img src="assets/developer.png" title="Developer">
+    <img src="assets/creator.png" title="Creator">
+    <img src="assets/staff.png" title="Staff">
+    <img src="assets/bugfinder.png" title="Bug Finder">
+    <img src="assets/oguser.png" title="OG User">
+  </div>
+
+  <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('u') || 'unknown';
+
+    document.getElementById('displayName').textContent = `@${username}`;
+    document.getElementById('vanityLink').textContent = `grief.xyz/${username}`;
+
+    document.querySelectorAll('.badges img').forEach(img => {
+      img.addEventListener('mouseover', () => {
+        const sound = document.getElementById('hoverSound');
+        if (sound) {
+          sound.currentTime = 0;
+          sound.play();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
