@@ -2,168 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GRIEF</title>
-  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GRIEF | Profile</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at center, #0c0c0c, #000);
-      color: white;
-      height: 100vh;
+      background-color: #0f0f0f;
+      color: #fff;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      overflow: hidden;
-      position: relative;
+      justify-content: center;
+      min-height: 100vh;
     }
 
-    /* Watermark background text */
-    .watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 15vw;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.02);
+    .card {
+      background: rgba(30,30,30,0.75);
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
       text-align: center;
-      pointer-events: none;
-      user-select: none;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
     }
 
-    /* Auth buttons */
-    .top-right {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .top-right button {
-      background: #fff;
-      color: #000;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 8px;
+    .title {
+      font-size: 2.2rem;
       font-weight: 600;
-      cursor: pointer;
+      margin-bottom: 0.3rem;
     }
 
-    .top-right button:hover {
-      background: #e5e5e5;
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #aaa;
+      margin-bottom: 1.8rem;
     }
 
-    /* Center container */
-    .vanity-box {
-      backdrop-filter: blur(14px);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 20px;
+    .owner {
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #d4af37, #ffd54f, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .owner img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 0.8rem;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
 
-    .vanity-box input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 10px 15px;
-      font-size: 1rem;
-      width: 200px;
-    }
-
-    .vanity-box button {
-      background: #fff;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 999px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .vanity-box button:hover {
-      background: #ddd;
-    }
-
-    /* Badge bar */
-    .badges {
-      position: absolute;
-      bottom: 25px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .badges img {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.05);
-      padding: 4px;
-      transition: 0.2s;
-    }
-
-    .badges img:hover {
-      transform: scale(1.1);
-    }
-
-    @media (max-width: 600px) {
-      .vanity-box {
-        flex-direction: column;
-      }
-
-      .vanity-box input {
-        width: 100%;
-      }
-
-      .top-right {
-        right: 10px;
-        top: 10px;
-      }
+    .badge img {
+      width: 20px;
+      height: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="watermark">GRIEF</div>
+  <div class="card">
+    <div class="title">GRIEF</div>
+    <div class="subtitle">vanity, badges, and embeds</div>
 
-  <div class="top-right">
-    <button>Sign up</button>
-    <button>Log in</button>
+    <div class="owner">
+      Owner <img src="assets/crownw.png" alt="Crown Icon" />
+    </div>
+
+    <div class="badges">
+      <div class="badge"><img src="assets/artist.png" alt="Artist" /> Artist</div>
+      <div class="badge"><img src="assets/booster.png" alt="Booster" /> Booster</div>
+      <div class="badge"><img src="assets/creative.png" alt="Creative" /> Creative</div>
+    </div>
   </div>
-
-  <div class="vanity-box">
-    <input type="text" placeholder="Enter vanity" id="vanityInput">
-    <button onclick="claimVanity()">Claim</button>
-  </div>
-
-  <div class="badges">
-    <img src="assets/developer.png" title="Developer">
-    <img src="assets/creator.png" title="Creator">
-    <img src="assets/creative.png" title="Creative">
-    <img src="assets/oguser.png" title="OG User">
-    <img src="assets/donator.png" title="Donator">
-  </div>
-
-  <script>
-    function claimVanity() {
-      const input = document.getElementById('vanityInput');
-      const username = input.value.trim();
-      if (username) {
-        window.location.href = `user.html?u=${encodeURIComponent(username)}`;
-      }
-    }
-  </script>
 </body>
 </html>
