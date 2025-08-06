@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GRIEF</title>
+  <title>GRIEF | User</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
@@ -28,37 +28,30 @@
       font-size: 3rem;
       font-weight: 600;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
-    input {
+    .username-display {
+      font-size: 2.5rem;
+      font-weight: 600;
       padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
       border-radius: 10px;
-      outline: none;
       background: #1f1f1f;
       color: white;
       width: 250px;
       margin-bottom: 20px;
-      transition: background-color 0.3s;
+      user-select: all;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
     }
-    input:focus {
-      background-color: #2a2a2a;
-    }
-    button {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      background: white;
-      color: black;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      width: 250px;
-      margin-bottom: 25px;
-    }
-    button:hover {
-      background: #ccc;
+    .vanity-url {
+      font-size: 1rem;
+      color: #999;
+      margin-bottom: 30px;
+      letter-spacing: 0.05em;
+      user-select: all;
     }
     .badges {
       display: flex;
@@ -70,14 +63,14 @@
       width: 36px;
       height: 36px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.05);
       padding: 5px;
       transition: transform 0.2s ease, background-color 0.2s ease;
-      cursor: pointer;
+      cursor: default;
     }
     .badges img:hover {
       transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.15);
     }
     audio {
       display: none;
@@ -87,8 +80,8 @@
 <body>
   <h1>GRIEF</h1>
 
-  <input type="text" id="vanityInput" placeholder="Enter your name..." autocomplete="off" />
-  <button id="claimBtn">Claim</button>
+  <div class="username-display" id="usernameDisplay">@username</div>
+  <div class="vanity-url" id="vanityUrlDisplay">grief.xyz/username</div>
 
   <div class="badges">
     <img src="assets/developer.png" title="Developer" alt="Developer Badge" />
@@ -101,19 +94,18 @@
   <audio id="hoverSound" src="assets/click.mp3" preload="auto"></audio>
 
   <script>
-    const input = document.getElementById('vanityInput');
-    const button = document.getElementById('claimBtn');
-    const hoverSound = document.getElementById('hoverSound');
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('u') || 'unknown';
 
-    button.addEventListener('click', () => {
-      const username = input.value.trim().toLowerCase();
-      if (username) {
-        window.location.href = `user.html?u=${encodeURIComponent(username)}`;
-      }
-    });
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const vanityUrlDisplay = document.getElementById('vanityUrlDisplay');
+
+    usernameDisplay.textContent = `@${username}`;
+    vanityUrlDisplay.textContent = `grief.xyz/${username}`;
 
     document.querySelectorAll('.badges img').forEach(img => {
       img.addEventListener('mouseover', () => {
+        const hoverSound = document.getElementById('hoverSound');
         hoverSound.currentTime = 0;
         hoverSound.play();
       });
